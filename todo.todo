@@ -7,7 +7,7 @@ Todo List Vue:
     ✔ Create a simple page for the dashboard @done(21-11-24 00:33)
     ✔ Create a simple page for my account @done(21-11-24 00:38)
     ✔ Configure the vuex store @done(21-11-24 00:59)
-    ☐ Set up router guards 
+    ✔ Set up router guards @done(21-11-24 01:08)
 
 
 Todo List Django:
