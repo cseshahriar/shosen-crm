@@ -4,8 +4,8 @@ Todo List Vue:
     ✔ Create a component for the menu @done(21-11-23 22:40)
     ✔ Create a simple page for sign up @done(21-11-24 00:04)
     ✔ Create a simple page for log in @done(21-11-24 00:10)
-    ☐ Create a simple page for the dashboard
-    ☐ Create a simple page for my account
+    ✔ Create a simple page for the dashboard @done(21-11-24 00:33)
+    ✔ Create a simple page for my account @done(21-11-24 00:38)
     ☐ Configure the vuex store
     ☐ Set up router guards 
 
