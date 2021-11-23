@@ -1,2 +1,2 @@
 # shosen-crm
-CRM pet project django and vuejs
+CRM project with django and vue.js

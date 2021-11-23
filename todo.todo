@@ -1,0 +1,26 @@
+Todo List Vue:
+    ☐ Install Vue and some libraries
+    ☐ Setup the libraries
+    ☐ Create a component for the menu
+    ☐ Create a simple page for sign up
+    ☐ Create a simple page for log in
+    ☐ Create a simple page for the dashboard
+    ☐ Create a simple page for my account
+    ☐ Configure the vuex store
+    ☐ Set up router guards 
+
+
+Todo List Django:
+    ☐ Create venv and activate
+    ☐ Install django
+    ☐ Install django-rest-framework
+    ☐ Install django-cors-headers
+    ☐ Install djoser
+    ☐ Create Django project
+    ☐ Configure the project
+    ☐ Add djoser to the urls
+    ☐ Create superuser
+    ☐ Run the development server
+    ☐ Make it possible to sign up from the frontend
+    ☐ Make it possible to log in  from the frontend
+    ☐ Make it possible to log out  from the frontend
