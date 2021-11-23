@@ -1,0 +1,18 @@
+sudo npm install -g @vue/cli
+vue create crm_vue
+Manualy select features
+Babel
+Router 
+Vuex
+CSS Pre-processor
+Choose Vue version
+3.x (Preview)
+Use history y
+sass/scss (with dart-sass)
+in dedicated config file
+save this as a preset for features n
+
+npm install bulma or yarn add bulma
+npm install bulma-toast or yarn add bulma-toast
+npm install axios or yarn add axios
+ 
