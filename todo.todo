@@ -11,16 +11,16 @@ Todo List Vue:
 
 
 Todo List Django:
-    ☐ Create venv and activate
-    ☐ Install django
-    ☐ Install django-rest-framework
-    ☐ Install django-cors-headers
-    ☐ Install djoser
-    ☐ Create Django project
-    ☐ Configure the project
-    ☐ Add djoser to the urls
-    ☐ Create superuser
-    ☐ Run the development server
+    ✔ Create venv and activate @done(21-11-24 20:08)
+    ✔ Install django @done(21-11-24 20:08)
+    ✔ Install django-rest-framework @done(21-11-24 20:08)
+    ✔ Install django-cors-headers @done(21-11-24 20:08)
+    ✔ Install djoser @done(21-11-24 20:09)
+    ✔ Create Django project @done(21-11-24 20:09)
+    ✔ Configure the project @done(21-11-24 20:09)
+    ✔ Add djoser to the urls @done(21-11-24 20:09)
+    ✔ Create superuser @done(21-11-24 20:09)
+    ✔ Run the development server @done(21-11-24 20:09)
     ☐ Make it possible to sign up from the frontend
     ☐ Make it possible to log in  from the frontend
     ☐ Make it possible to log out  from the frontend
