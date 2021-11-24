@@ -21,6 +21,6 @@ Todo List Django:
     ✔ Add djoser to the urls @done(21-11-24 20:09)
     ✔ Create superuser @done(21-11-24 20:09)
     ✔ Run the development server @done(21-11-24 20:09)
-    ☐ Make it possible to sign up from the frontend
+    ✔ Make it possible to sign up from the frontend @done(21-11-25 00:13)
     ☐ Make it possible to log in  from the frontend
     ☐ Make it possible to log out  from the frontend
