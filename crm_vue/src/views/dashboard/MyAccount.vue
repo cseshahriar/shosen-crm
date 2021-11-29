@@ -6,6 +6,7 @@
             </div>
 
             <div class="column is-12">
+                <router-link to="/dashboard/leads" class="button is-success"><strong>Leads</strong></router-link>
                 <button @click="logout()" class="button is-danger">Log out</button>
             </div>
 

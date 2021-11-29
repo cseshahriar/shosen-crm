@@ -25,3 +25,11 @@ Todo List Django:
     ✔ Make it possible to sign up from the frontend @done(21-11-25 00:13)
     ✔ Make it possible to log in  from the frontend @done(21-11-27 23:50)
     ✔ Make it possible to log out  from the frontend @done(21-11-27 23:50)
+    ✔ Implement a loading bar @done(21-11-29 19:57)
+    ✔ Create a django app for the leads @done(21-11-29 19:57)
+    ✔ Database model for leads @done(21-11-29 19:57)
+    ✔ Serializer for the leads @done(21-11-29 19:57)
+    ✔ API view for the leads @done(21-11-29 20:07)
+    ✔ Set up the urls @done(21-11-29 20:07)
+    ☐ Create page for showing the leads
+    ☐ Make it possible to add leads
