@@ -15,3 +15,6 @@ class LeasViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """ filter logged in user leads """
         return self.queryset.filter(created_by=self.request.user)
+    
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)

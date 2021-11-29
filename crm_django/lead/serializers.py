@@ -6,7 +6,9 @@ class LeadSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Lead
+        read_only_fields = ('created_by','created', 'updated',)
         fields = (
+            'id',
             'company',
             'contact_person',
             'email',
@@ -16,7 +18,4 @@ class LeadSerializer(serializers.ModelSerializer):
             'estimated_value',
             'status',
             'priority',
-            'created_by',
-            'created',
-            'updated'
         )

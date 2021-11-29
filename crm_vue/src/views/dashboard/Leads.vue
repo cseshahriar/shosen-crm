@@ -3,30 +3,31 @@
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h1 class="title">Leads</h1> 
+                <router-link to="/dashboard/leads/add">Add Lead</router-link>
+            </div>
 
-                <div class="column is-12">
-                    <table class="table is-fullwidth">
-                        <thead>
-                            <tr>
-                                <th>Company</th>
-                                <th>Contact person</th>
-                                <th>Assigned to</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+            <div class="column is-12">
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Contact person</th>
+                            <th>Assigned to</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                        <tbody>
-                            <tr v-for="lead in leads"
-                                v-bind:key="lead.id">
-                                    <td>{{ lead.company }}</td>
-                                    <td>{{ lead.contact_person }}</td>
-                                    <td>{{ lead.status }}</td>
-                                    <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <tbody>
+                        <tr v-for="lead in leads"
+                            v-bind:key="lead.id">
+                                <td>{{ lead.company }}</td>
+                                <td>{{ lead.contact_person }}</td>
+                                <td>{{ lead.status }}</td>
+                                <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>    
