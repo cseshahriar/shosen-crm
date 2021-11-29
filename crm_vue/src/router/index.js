@@ -7,6 +7,7 @@ import LogIn from '../views/LogIn.vue'
 import Navbar from '@/components/layout/Navbar'
 import Dashboard from '../views/dashboard/Dashboard'
 import MyAccount from '../views/dashboard/MyAccount'
+import Leads from '../views/dashboard/Leads'
 
 const routes = [
   {
@@ -41,6 +42,14 @@ const routes = [
     }
   },
   {
+    path: '/dashboard/leads',
+    name: 'Leads',
+    component: Leads,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -57,10 +66,16 @@ const router = createRouter({
 
 // router guard
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requireLogin) && !store.state.isAuthenticated) {
-    next('/log-in')
+  if (to.matched.some(record => record.meta.requireLogin)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!store.state.isAuthenticated) {
+      next({ name: 'Login' })
+    } else {
+      next() // go to wherever I'm going
+    }
   } else {
-    next()
+    next() // does not require auth, make sure to always call next()!
   }
 })
 
