@@ -8,6 +8,7 @@ Todo List Vue:
     ✔ Create a simple page for my account @done(21-11-24 00:38)
     ✔ Configure the vuex store @done(21-11-24 00:59)
     ✔ Set up router guards @done(21-11-24 01:08)
+    ✔ Implement a load bar @done(21-11-29 08:53)
 
 
 Todo List Django:
@@ -22,5 +23,5 @@ Todo List Django:
     ✔ Create superuser @done(21-11-24 20:09)
     ✔ Run the development server @done(21-11-24 20:09)
     ✔ Make it possible to sign up from the frontend @done(21-11-25 00:13)
-    ☐ Make it possible to log in  from the frontend
-    ☐ Make it possible to log out  from the frontend
+    ✔ Make it possible to log in  from the frontend @done(21-11-27 23:50)
+    ✔ Make it possible to log out  from the frontend @done(21-11-27 23:50)
