@@ -2,8 +2,9 @@
     <div class="container">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">Leads</h1> 
-                <router-link to="/dashboard/leads/add">Add Lead</router-link>
+                <h1 class="title">Lead List <button class="button is-warning is-small">{{leads.length}}</button>
+                <router-link to="/dashboard/leads/add" class="button is-primary is-small lead-add-btn">Add Lead</router-link>
+                </h1> 
             </div>
 
             <div class="column is-12">
@@ -65,5 +66,7 @@
 </script>
 
 <style scoped>
-
+.lead-add-btn {
+    float: right;
+}
 </style>
