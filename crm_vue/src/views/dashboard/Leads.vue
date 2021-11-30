@@ -20,12 +20,13 @@
                     </thead>
 
                     <tbody>
-                        <tr v-for="lead in leads"
-                            v-bind:key="lead.id">
-                                <td>{{ lead.company }}</td>
-                                <td>{{ lead.contact_person }}</td>
-                                <td>{{ lead.status }}</td>
-                                <td></td>
+                        <tr v-for="lead in leads" v-bind:key="lead.id">
+                            <td>{{ lead.company }}</td>
+                            <td>{{ lead.contact_person }}</td>
+                            <td>{{ lead.status }}</td>
+                            <td>
+                                <router-link :to="{ name: 'Lead', params: { id: lead.id }}">Details</router-link>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
