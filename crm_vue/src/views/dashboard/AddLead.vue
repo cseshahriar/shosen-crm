@@ -83,6 +83,10 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="notification is-warning" v-if="errors.length">
+                        <p v-for="error in errors" :key="error">{{ error }}</p>
+                    </div>
 
                     <div class="field">
                         <div class="control">
@@ -112,11 +116,13 @@
                 website: '',
                 status: 'new',
                 priority: 'medium',
+                errors: [],
             }
         },
         methods: {
             async submitForm() {
                 this.$store.commit('setIsLoading', true)
+                this.errors = []
 
                 const lead = {
                     company: this.company,
@@ -130,24 +136,40 @@
                     priority: this.priority
                 }
                 
-                await axios
-                .post('/api/v1/leads/', lead)
-                .then(response => {
-                    toast({
-                        message: 'The lead was added',
-                        type: 'is-success',
-                        dismissible: true,
-                        pauseOnHover: true,
-                        duration: 2000,
-                        position: 'bottom-right',
-                    })
-                    this.$router.push('/dashboard/leads')
-                })
-                .catch(error => {
-                        console.log(error)
-                })
+                // validation
+                if(this.company === '') {
+                    this.errors.push('The company is required')
+                }
+                if(this.contact_person === '') {
+                    this.errors.push('The contact_person is required')
+                }
+                if(this.email === '') {
+                    this.errors.push('The email is required')
+                }
+                if(this.phone === '') {
+                    this.errors.push('The phone is required')
+                }
 
-                this.$store.commit('setIsLoading', false)
+                if(!this.errors.length) {
+                    await axios
+                    .post('/api/v1/leads/', lead)
+                    .then(response => {
+                        toast({
+                            message: 'The lead was added',
+                            type: 'is-success',
+                            dismissible: true,
+                            pauseOnHover: true,
+                            duration: 2000,
+                            position: 'bottom-right',
+                        })
+                        this.$router.push('/dashboard/leads')
+                    })
+                    .catch(error => {
+                            console.log(error)
+                    })
+    
+                    this.$store.commit('setIsLoading', false)
+                }
             }  
         }
     }
