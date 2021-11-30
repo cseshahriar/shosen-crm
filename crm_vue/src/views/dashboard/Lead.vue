@@ -2,9 +2,11 @@
     <div class="container">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1>Lead 
-                    <router-link to="/" class="button is-primary is-small btn-edit">Edit</router-link>
-                </h1>
+                <h1>Lead</h1>
+
+                <div class="buttons">
+                    <button @click="deleteLead" class="button is-small is-danger">Delete</button>
+                </div>
             </div>
 
             <div class="column is-6">
@@ -36,6 +38,8 @@
 
 <script>
     import axios from 'axios'
+    import {toast} from 'bulma-toast'
+
     export default {
         name: 'Lead',
         data() {
@@ -60,7 +64,29 @@
                     })
                 this.$store.commit('setIsLoading', false)
             },
-          
+            async deleteLead() {
+                console.log('deleteLead')
+
+                this.$store.commit('setIsLoading', true)
+                const leadID = this.$route.params.id
+                await axios
+                    .post(`/api/v1/leads/delete_lead/${leadID}/`)
+                    .then(response => {
+                        this.$router.push('/dashboard/leads')
+                        toast({
+                            message: 'Lead has been deleted',
+                            type: 'is-success',
+                            dismissible: true,
+                            pauseOnHover: true,
+                            duration: 2000,
+                            position: 'top-right'
+                        })
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+                this.$store.commit('setIsLoading', false)
+            },
         }
     }
 </script>
