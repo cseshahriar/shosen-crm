@@ -2,9 +2,10 @@
     <div class="container">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1>Lead</h1>
+                <h1 class="subtitle">{{ lead.company }}</h1>
 
                 <div class="buttons">
+                    <router-link :to="{ name: 'EditLead', params: { id: lead.id }}" class="button is-light">Edit</router-link>
                     <button @click="deleteLead" class="button is-small is-danger">Delete</button>
                 </div>
             </div>

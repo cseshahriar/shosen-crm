@@ -10,6 +10,7 @@ import MyAccount from '../views/dashboard/MyAccount'
 import Leads from '../views/dashboard/Leads'
 import AddLead from '../views/dashboard/AddLead'
 import Lead from '../views/dashboard/Lead'
+import EditLead from '../views/dashboard/EditLead'
 
 const routes = [
   {
@@ -63,6 +64,14 @@ const routes = [
     path: '/dashboard/leads/:id',
     name: 'Lead',
     component: Lead,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/leads/:id/edit',
+    name: 'EditLead',
+    component: EditLead,
     meta: {
       requireLogin: true
     }
