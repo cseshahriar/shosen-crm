@@ -59,4 +59,11 @@ class UserDetail(APIView):
 def get_stripe_pub_key(request):
     pub_key = settings.STRIPE_PUB_KEY
     return Response({'pub_key': pub_key})
+
+
+@api_view(['GET'])
+def get_my_team(request):
+    team = Team.objects.filter(members__in=[request.user]).first()
+    serializer = TeamSerializer(team)
+    return Response(serializer.data)
     
