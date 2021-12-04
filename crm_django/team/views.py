@@ -86,5 +86,16 @@ def upgrade_plan(request):
     
     serializer = TeamSerializer(team)
     return Response(serializer.data)
-        
+
+
+@api_view(['POST'])
+def add_member(request):
+    team = Team.objects.filter(members__in=[request.user]).first()
+    username = request.data['username']
+    print('username', username)
+    # TODO: add try except
+    user = User.objects.get(username=username)
+    team.members.add(user)
+    team.save()
+    return Response()  
     
