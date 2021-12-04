@@ -66,4 +66,25 @@ def get_my_team(request):
     team = Team.objects.filter(members__in=[request.user]).first()
     serializer = TeamSerializer(team)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def upgrade_plan(request):
+    team = Team.objects.filter(members__in=[request.user]).first()
+    plan = request.data['plan']
+    print('plan', plan)
+    
+    if plan == 'free':
+        plan = Plan.objects.get(name='Free')
+    elif plan == 'smalteam':
+        plan = Plan.objects.get(name='Small team')
+    elif plan == 'bigteam':
+        plan = Plan.objects.get(name='Big team')
+    
+    team.plan = plan
+    team.save()
+    
+    serializer = TeamSerializer(team)
+    return Response(serializer.data)
+        
     
