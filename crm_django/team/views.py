@@ -12,6 +12,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
+from stripe.api_resources import subscription
 
 
 from .models import Plan, Team
@@ -98,4 +99,27 @@ def add_member(request):
     team.members.add(user)
     team.save()
     return Response()  
+
+
+@api_view(['POST'])
+def check_session(request):
+    stripe.api_key = settings.STRIPE_PUB_KEY
+    error = ''
+
+    try:
+        team = Team.objects.filter(members__in=[request.user]).first()
+        subscription = stripe.Subscription.retrieve(team.stripe_subscription_id)
+        product = stripe.Product.retrieve(subscription.plan.product)
+        
+        team.plan_status = Team.PLAN_ACTIVE
+        team.plan_end_date = datetime.formtimestamp(subscription.current_period_end)
+        team.plan = Plan.objects.get(name=product.name)
+        team.save()
+        
+        serializer = TeamSerializer(team)
+        return Response(serializer.data)
+    except Exception as e:
+        error = 'There something wrong. Please try again!'
+        return Response({'error': error})
+    
     
