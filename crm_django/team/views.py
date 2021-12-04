@@ -1,6 +1,7 @@
 import json
 from rest_framework.serializers import Serializer
 from datetime import datetime
+import stripe
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -52,5 +53,10 @@ class UserDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+    
+    
+@api_view(['GET'])
+def get_stripe_pub_key(request):
+    pub_key = settings.STRIPE_PUB_KEY
+    return Response({'pub_key': pub_key})
     

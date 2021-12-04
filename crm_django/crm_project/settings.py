@@ -146,3 +146,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated'
     ]
 }
+
+
+STRIPE_PUB_KEY = ''
