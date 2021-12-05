@@ -141,5 +141,35 @@ def cancel_plan(request):
     serializer = TeamSerializer(team)
     return Response(serializer.data)
         
+        
+@api_view(['POST'])
+def create_checkout_session(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    data = json.loads(request.body)
+    plan = data['plan']
+    
+    if plan == 'smallteam':
+        price_id = settings.STRIPE_PRICE_ID_SMALL_TEAM
+    else:
+        price_id = settings.STRIPE_PRICE_ID_BIG_TEAM
+        
+    team = Team.objects.filter(members__in=[request.user]).first()
+    
+    try:
+        checkout_session = stripe.checkout.Session.created(
+            client_reference_id=team.id,
+            success_url='%s?session_id={CHECKOUT_SESSION_ID}' % settings.FRONTEND_WEBSITE_SUCCESS_URL,
+            payment_method_type = ['card'],
+            mode = 'subscription',
+            line_items = [
+                {
+                    'price': price_id,
+                    'quantity': 1
+                }
+            ]
+        )
+        return Response({'sessionId': checkout_session['id']})
+    except Exception as e:
+        return Response({'error': str(e)})
     
     

@@ -16,4 +16,4 @@ npm install bulma or yarn add bulma
 npm install bulma-toast or yarn add bulma-toast
 npm install axios or yarn add axios
  
-pause 1.08.0" minutes
+pause 1.50.0" minutes
