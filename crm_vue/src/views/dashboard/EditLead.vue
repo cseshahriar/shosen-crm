@@ -2,7 +2,7 @@
     <div class="container">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">{{ lead.company }}</h1>
+                <h1 class="title">Edit {{ lead.company }}</h1>
             </div>
 
             <div class="column is-12">
@@ -83,9 +83,23 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="notification is-warning" v-if="errors.length">
-                        <p v-for="error in errors" :key="error">{{ error }}</p>
+
+                    <div class="field">
+                        <label>Assigned to</label>
+                        <div class="control">
+                            <div class="select">
+                                <select v-model="lead.assigned_to">
+                                    <option value="" selected>Select member</option>
+                                    <option
+                                        v-for="member in team.members"
+                                        v-bind:key="member.id"
+                                        v-bind:value="member.id"
+                                    >
+                                        {{ member.username }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="field">
@@ -101,24 +115,26 @@
 
 <script>
     import axios from 'axios'
-    import {toast} from 'bulma-toast'
-
+    import { toast } from 'bulma-toast'
     export default {
         name: 'EditLead',
         data() {
             return {
                 lead: {},
-                errors: [],
+                team: {
+                    members: []
+                }
             }
         },
         mounted() {
             this.getLead()
+            this.getTeam()
         },
         methods: {
             async getLead() {
                 this.$store.commit('setIsLoading', true)
                 const leadID = this.$route.params.id
-                await axios
+                axios
                     .get(`/api/v1/leads/${leadID}/`)
                     .then(response => {
                         this.lead = response.data
@@ -128,40 +144,10 @@
                     })
                 this.$store.commit('setIsLoading', false)
             },
-
             async submitForm() {
                 this.$store.commit('setIsLoading', true)
-                this.errors = []
-                 const leadID = this.$route.params.id
-
-                const lead = {
-                    company: this.company,
-                    contact_person: this.contact_person,
-                    email: this.email,
-                    phone: this.phone,
-                    website: this.website,
-                    estimated_value: this.estimated_value,
-                    confidence: this.confidence,
-                    status: this.status,
-                    priority: this.priority
-                }
-                
-                // validation
-                if(this.company === '') {
-                    this.errors.push('The company is required')
-                }
-                if(this.contact_person === '') {
-                    this.errors.push('The contact_person is required')
-                }
-                if(this.email === '') {
-                    this.errors.push('The email is required')
-                }
-                if(this.phone === '') {
-                    this.errors.push('The phone is required')
-                }
-
-                if(!this.errors.length) {
-                    await axios
+                const leadID = this.$route.params.id
+                axios
                     .patch(`/api/v1/leads/${leadID}/`, this.lead)
                     .then(response => {
                         toast({
@@ -172,19 +158,26 @@
                             duration: 2000,
                             position: 'bottom-right',
                         })
-                        this.$router.push('/dashboard/leads')
+                        this.$router.push(`/dashboard/leads/${leadID}`)
                     })
                     .catch(error => {
-                            console.log(error)
+                        console.log(error)
                     })
-    
-                    this.$store.commit('setIsLoading', false)
-                }
-            }  
+                this.$store.commit('setIsLoading', false)
+            },
+            async getTeam() {
+                this.$store.commit('setIsLoading', true)
+                await axios
+                    .get('/api/v1/teams/get_my_team/')
+                    .then(response => {
+                        this.team = response.data
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+                
+                this.$store.commit('setIsLoading', false)
+            }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

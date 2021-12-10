@@ -5,7 +5,7 @@
                 <h1 class="subtitle">{{ lead.company }}</h1>
 
                 <div class="buttons">
-                    <router-link :to="{ name: 'EditLead', params: { id: lead.id }}" class="button is-light">Edit</router-link>
+                    <router-link :to="{ name: 'EditLead', params: { id: lead.id }}" class="button is-small is-success">Edit</router-link>
                     <button @click="deleteLead" class="button is-small is-danger">Delete</button>
                 </div>
             </div>
