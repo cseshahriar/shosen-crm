@@ -64,7 +64,7 @@ export default {
                             position: 'bottom-right',
                         })
                         
-                        this.$store.commit('setItem', {'id': response.data.id, name: response.data.name})
+                        this.$store.commit('setItem', {'id': response.data.id, 'name': response.data.name})
 
                         this.$router.push('/dashboard')
                     })

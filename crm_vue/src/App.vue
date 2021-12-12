@@ -25,7 +25,8 @@
     beforeCreate() {
         this.$store.commit('initializeStore')
 
-        console.log(this.$store.state.user)
+        console.log('beforecreate user', this.$store.state.user)
+        console.log('beforecreate team', this.$store.state.team)
 
         if (this.$store.state.token) {
             axios.defaults.headers.common['Authorization'] = "Token " + this.$store.state.token
