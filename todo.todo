@@ -9,6 +9,7 @@ Todo List Vue:
     ✔ Configure the vuex store @done(21-11-24 00:59)
     ✔ Set up router guards @done(21-11-24 01:08)
     ✔ Implement a load bar @done(21-11-29 08:53)
+    ✔ Store user info in vuex @done(21-12-10 11:45)
 
 
 Todo List Django:
@@ -31,5 +32,5 @@ Todo List Django:
     ✔ Serializer for the leads @done(21-11-29 19:57)
     ✔ API view for the leads @done(21-11-29 20:07)
     ✔ Set up the urls @done(21-11-29 20:07)
-    ☐ Create page for showing the leads
-    ☐ Make it possible to add leads
+    ✔ team app and api created @done(21-12-10 11:45)
+    ✔ client app and api crated @done(21-12-10 11:46)

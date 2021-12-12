@@ -77,7 +77,6 @@
                         this.$store.commit('setToken', token)
                         axios.defaults.headers.common['Authorization'] = 'Token ' + token
                         localStorage.setItem('token', token)
-                        this.$router.push('/dashboard/my-account')
                     })
                     .catch(error => {
                         if(error.response) {
@@ -100,6 +99,7 @@
                             )
                             localStorage.setItem('username', response.data.username)
                             localStorage.setItem('userid', response.data.id)
+                            this.$router.push('/dashboard/my-account')
                         })
                         .catch(error => {
                             console.log(error)

@@ -24,10 +24,18 @@
     },
     beforeCreate() {
         this.$store.commit('initializeStore')
+
+        console.log(this.$store.state.user)
+
         if (this.$store.state.token) {
             axios.defaults.headers.common['Authorization'] = "Token " + this.$store.state.token
         } else {
             axios.defaults.headers.common['Authorization'] = ""
+        }
+        
+        // if don't have a team than redirect to add a new team
+        if(!this.$store.state.team.id) {
+          this.$router.push('/dashboard/add-team')
         }
     },
   }
