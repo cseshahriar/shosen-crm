@@ -14,7 +14,6 @@ from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from stripe.api_resources import subscription
 
-
 from .models import Plan, Team
 from .serializers import UserSerializer, PlaneSerializer, TeamSerializer
 

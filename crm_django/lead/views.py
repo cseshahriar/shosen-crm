@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 
 from .models import Lead
 from .serializers import LeadSerializer
+from team.models import Team
 
 
 class LeasViewSet(viewsets.ModelViewSet):
@@ -13,13 +14,14 @@ class LeasViewSet(viewsets.ModelViewSet):
     serializer_class = LeadSerializer
     queryset = Lead.objects.all()
     
-    
     def get_queryset(self):
         """ filter logged in user leads """
-        return self.queryset.filter(created_by=self.request.user)
+        team = Team.objects.filter(members__in=[self.request.user]).first()
+        return self.queryset.filter(team=team)
     
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        team = Team.objects.filter(members__in=[self.request.user]).first()
+        serializer.save(team=team,created_by=self.request.user)
         
         
 @api_view(['POST'])
