@@ -90,11 +90,11 @@ def upgrade_plan(request):
 
 @api_view(['POST'])
 def add_member(request):
+    print('member----------------------------------------------', request.data)
     team = Team.objects.filter(members__in=[request.user]).first()
     username = request.data['username']
-    print('username', username)
-    # TODO: add try except
     user = User.objects.get(username=username)
+    print('user--------------------------------------------------------', user)
     team.members.add(user)
     team.save()
     return Response()  

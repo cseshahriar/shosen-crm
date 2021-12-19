@@ -3,6 +3,7 @@
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h1 class="title">Team</h1> 
+                <router-link :to="{'name': 'AddMember'}" class="button is-primary">Add Member</router-link>
             </div>
 
             <div class="column is-12">
@@ -50,7 +51,7 @@ export default {
                 .get("/api/v1/teams/get_my_team/")
                 .then(response => {
                     console.log('response', response.data)
-                   this.team = response.data
+                    this.team = response.data
                 })
                 .catch(error => {
                     console.log(error)
