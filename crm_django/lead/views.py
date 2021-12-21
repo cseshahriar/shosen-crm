@@ -23,6 +23,21 @@ class LeasViewSet(viewsets.ModelViewSet):
         team = Team.objects.filter(members__in=[self.request.user]).first()
         serializer.save(team=team,created_by=self.request.user)
         
+    def perform_update(self, serializer):
+        obj = self.get_object()
+        member_id = self.request.data['assigned_to']
+        
+        if member_id:
+            try:
+                user = User.objects.get(pk=member_id)
+                serializer.save(assigned_to=user)
+            except User.DoesNotExist:
+                print("User does not exists.")
+                return Response({'error': 'User does not exist'}, 400)
+        else:
+            serializer.save()
+                
+        
         
 @api_view(['POST'])
 def delete_lead(request, lead_id):

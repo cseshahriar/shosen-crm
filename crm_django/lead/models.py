@@ -39,6 +39,10 @@ class Lead(models.Model):
     priority = models.CharField(
         max_length=25, choices=PRIORITY_CHOICES, default=MEDIUM
     )
+    assigned_to = models.ForeignKey(
+        User, on_delete=models.SET_NULL, related_name="assignedleads",
+        null=True, blank=True
+    )
     created_by = models.ForeignKey(
         User, related_name="leads", on_delete=models.CASCADE
     )
