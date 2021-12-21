@@ -8,9 +8,9 @@
             <div class="column is-12">
                 <form @submit.prevent="submitForm">
                     <div class="field">
-                        <label>Email</label>
+                        <label>Username</label>
                         <div class="control">
-                            <input type="email" name="email" class="input" v-model="username">
+                            <input type="text" name="username" class="input" v-model="username">
                         </div>
                     </div>
 
@@ -85,9 +85,9 @@ export default {
                             duration: 2000,
                             position: 'bottom-right',
                         })
-                        const emailData = {'username': this.username}
+                        const usernameData = {'username': this.username}
                         axios
-                            .post('/api/v1/teams/add_member/', emailData)
+                            .post('/api/v1/teams/add_member/', usernameData)
                             .then(response => {
                                 this.$router.push({'name': 'Team'})
                             })
