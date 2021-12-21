@@ -144,6 +144,7 @@
                     })
                 this.$store.commit('setIsLoading', false)
             },
+
             async submitForm() {
                 this.$store.commit('setIsLoading', true)
                 const leadID = this.$route.params.id
@@ -165,6 +166,7 @@
                     })
                 this.$store.commit('setIsLoading', false)
             },
+            
             async getTeam() {
                 this.$store.commit('setIsLoading', true)
                 await axios

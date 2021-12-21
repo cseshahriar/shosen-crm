@@ -3,19 +3,11 @@
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h1 class="title">Leads</h1>
+                <router-link to="/dashboard/leads/add" v-if="$store.state.team.max_leads > num_leads">Add lead</router-link>
 
-                <router-link 
-                    to="/dashboard/leads/add"
-                    v-if="$store.state.team.max_leads > num_leads"
-                >Add lead</router-link>
-
-                <div
-                    class="notification is-danger"
-                    v-else
-                >
+                <div class="notification is-warning" v-else>
                     You have reached the top of your limitations. Please upgrade!
                 </div>
-
                 <hr>
 
                 <form @submit.prevent="getLeads">
@@ -98,12 +90,14 @@
                 this.$store.commit('setIsLoading', true)
                 this.showNextButton = false
                 this.showPreviousButton = false
+                
                 await axios
                     .get(`/api/v1/leads/`)
                     .then(response => {
                         console.log(response.data)
                         this.num_leads = response.data.count
                     })
+
                 await axios
                     .get(`/api/v1/leads/?page=${this.currentPage}&search=${this.query}`)
                     .then(response => {
