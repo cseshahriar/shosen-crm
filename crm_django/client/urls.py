@@ -1,7 +1,5 @@
 from django.urls import path, include
-
 from rest_framework.routers import DefaultRouter
-
 from .views import ClientViewSet, NoteViewSet, convert_lead_to_client, delete_client
 
 router = DefaultRouter()
