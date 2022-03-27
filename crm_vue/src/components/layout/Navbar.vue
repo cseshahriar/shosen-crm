@@ -9,12 +9,13 @@
         <div class="navbar-menu">
 
             <div class="navbar-end">
-                 <template v-if="$store.state.isAuthenticated">
+                <template v-if="$store.state.isAuthenticated">
+                    <router-link to="/dashboard/clients" class="navbar-item">Clients</router-link>
                     <router-link to="/dashboard/leads" class="navbar-item">Leads</router-link>
                     <router-link to="/dashboard/team" class="navbar-item">Team</router-link>
                     <router-link to="/dashboard/my-account" class="navbar-item"><strong>My Account</strong></router-link>
                     <button @click="logout()" class="button is-small is-danger btn-logout">Log out</button>
-                 </template>
+                </template>
 
                 <div class="navbar-item">
                     <div class="buttons">

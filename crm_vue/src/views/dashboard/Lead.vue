@@ -6,7 +6,6 @@
 
                 <div class="buttons">
                     <!-- lead edit problem -->
-                    <!-- <router-link :to="{ name: 'EditLead', params: { id: lead.id }}" class="button is-light">Edit</router-link> -->
                     <button @click="convertToClient" class="button is-info">Convert to client</button>
                     <button @click="deleteLead" class="button is-danger">Delete</button>
                 </div>

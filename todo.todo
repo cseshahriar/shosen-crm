@@ -10,6 +10,7 @@ Todo List Vue:
     ✔ Set up router guards @done(21-11-24 01:08)
     ✔ Implement a load bar @done(21-11-29 08:53)
     ✔ Store user info in vuex @done(21-12-10 11:45)
+    ☐ List of clients
 
 
 Todo List Django:

@@ -89,11 +89,13 @@
                         <div class="control">
                             <div class="select">
                                 <select v-model="lead.assigned_to">
-                                    <option value="" selected>Select member</option>
+                                    <option value="">Select member</option>
+
                                     <option
                                         v-for="member in team.members"
                                         v-bind:key="member.id"
                                         v-bind:value="member.id"
+                                        :selected="member.id==lead.assigned_to.id"
                                     >
                                         {{ member.username }}
                                     </option>
