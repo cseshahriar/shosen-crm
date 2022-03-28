@@ -3,8 +3,8 @@ from rest_framework.routers import DefaultRouter
 from .views import ClientViewSet, NoteViewSet, convert_lead_to_client, delete_client
 
 router = DefaultRouter()
-router.register('clients', ClientViewSet, basename='clients')
 router.register('notes', NoteViewSet, basename='notes')
+router.register('clients', ClientViewSet, basename='clients')
 
 urlpatterns = [
     path('convert_lead_to_client/', convert_lead_to_client, name='convert_lead_to_client'),

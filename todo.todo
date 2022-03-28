@@ -40,9 +40,9 @@ Todo List Django:
     ✔ team app and api created @done(21-12-10 11:45)
     ✔ client app and api crated @done(21-12-10 11:46)
     -Add notes to a client
-        - database model
-        - serializer
-        - viewsets
+        -Done database model
+        -Done serializer
+        -Done viewsets
         - page for adding notes
         - send information to server
     -Show notes on the detail page of a client

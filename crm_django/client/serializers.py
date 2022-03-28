@@ -28,5 +28,5 @@ class NoteSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
-            'body'
+            'body',
         )

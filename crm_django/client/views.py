@@ -36,7 +36,7 @@ class NoteViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         team = Team.objects.filter(members__in=[self.request.user]).first()
         client_id = self.request.GET.get('client_id')
-        return self.queryset.filter(team=team).filter(client_id=client_id).first()
+        return self.queryset.filter(team=team).filter(client_id=client_id)
     
     def perform_create(self, serializer):
         team = Team.objects.filter(members__in=[self.request.user]).first()
@@ -48,7 +48,6 @@ class NoteViewSet(viewsets.ModelViewSet):
 def convert_lead_to_client(request):
     team = Team.objects.filter(members__in=[request.user]).first()
     lead_id = request.data['lead_id']
-    
     try:
         lead = Lead.objects.filter(team=team).get(pk=lead_id)
     except Lead.DoesNotExist:
