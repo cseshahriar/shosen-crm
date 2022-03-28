@@ -16,6 +16,7 @@ import Team from '../views/dashboard/Team'
 import AddMember from '../views/dashboard/AddMember'
 import Clients from '../views/dashboard/Clients'
 import AddClient from '../views/dashboard/AddClient'
+import Client from '../views/dashboard/Client'
 
 const routes = [
   {
@@ -121,6 +122,15 @@ const routes = [
       requireLogin: true
     }
   },
+  {
+    path: '/dashboard/clients/:id/detail',
+    name: 'Client',
+    component: Client,
+    meta: {
+      requireLogin: true
+    }
+  },
+  
 ]
 
 const router = createRouter({
