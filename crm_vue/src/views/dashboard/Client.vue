@@ -32,12 +32,13 @@
             <hr>
             <div class="column is-12">
                 <h2 class="subtitle">Notes
-                    <router-link :to="{ name: 'AddNote', params: { id: this.$route.params.id }}"> Add Note</router-link>
+                    <router-link :to="{ name: 'AddNote', params: { id: this.$route.params.id }}" class="button is-success is-small"> Add Note</router-link>
                 </h2>
                 
                 <div class="box" v-for="note in notes" v-bind:key="note.id">
                     <h3 class="is-size-4">{{ note.name }}</h3>
                     <p>{{ note.body }}</p>
+                    <router-link :to="{ name: 'EditNote', params: { id:client.id, note_id: note.id }}" class="button is-info is-small"> Edit Note</router-link>
                 </div>
             </div>
         </div>
