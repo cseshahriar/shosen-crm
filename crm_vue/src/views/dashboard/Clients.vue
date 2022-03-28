@@ -36,8 +36,8 @@
                                     <td>{{ client.contact_person }}</td>
                                     <td>
                                         <div class="buttons">
-                                            <router-link :to="{ name: 'Client', params: { id: client.id }}">Details</router-link>
-                                            <!-- <router-link :to="{ name: 'EditLead', params: { id: lead.id }}"> Edit</router-link> -->
+                                            <router-link :to="{ name: 'Client', params: { id: client.id }}">Detail </router-link> &nbsp;
+                                            <router-link :to="{ name: 'EditClient', params: { id: client.id }}"> Edit</router-link>
                                         </div>
                                     </td>
                             </tr>
