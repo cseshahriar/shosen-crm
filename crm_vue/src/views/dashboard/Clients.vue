@@ -3,7 +3,7 @@
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h1 class="title">Clients</h1>
-                <router-link to="/dashboard/clients/add">Add Client</router-link>
+                <router-link to="/dashboard/clients/add" class="button is-info">Add Client</router-link>
                 <hr>
                 <form @submit.prevent="getLeads">
                     <div class="field has-addons">
