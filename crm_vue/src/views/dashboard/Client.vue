@@ -6,7 +6,7 @@
 
                 <div class="buttons">
                     <!-- lead edit problem -->
-                    <!-- <button @click="deleteLead" class="button is-danger">Delete</button> -->
+                    <button @click="deleteClient" class="button is-danger">Delete</button>
                 </div>
             </div>
 
@@ -49,7 +49,7 @@
                 this.$store.commit('setIsLoading', true)
                 const clientID = this.$route.params.id
                 await axios
-                    .post(`/api/v1/clients/${clientID}/`)
+                    .post(`/api/v1/clients/delete_client/${clientID}/`)
                     .then(response => {
                         console.log(response.data)
                         this.$router.push('/dashboard/clients')
