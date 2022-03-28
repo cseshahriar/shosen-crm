@@ -24,7 +24,7 @@
                             <tr>
                                 <th>Company</th>
                                 <th>Contact person</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
@@ -35,16 +35,14 @@
                                     <td>{{ client.name }}</td>
                                     <td>{{ client.contact_person }}</td>
                                     <td>
-                                        <router-link :to="{ name: 'Client', params: { id: client.id }}">Details</router-link>
+                                        <div class="buttons">
+                                            <a href="" class="button is-success">Details</a>
+                                            <a href="" class="button is-warning">Edit</a>
+                                        </div>
                                     </td>
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="buttons">
-                        <button class="button is-light" @click="goToPreviousPage()" v-if="showPreviousButton">Previous</button>
-                        <button class="button is-light" @click="goToNextPage()" v-if="showNextButton">Next</button>
-                    </div>
                 </template>
 
                 <template v-else>
@@ -62,53 +60,24 @@
         data() {
             return {
                 clients: [],
-                showNextButton: false,
-                showPreviousButton: false,
-                currentPage: 1,
-                query: '',
-                num_leads: 0
             }
         },
         mounted() {
             this.getClients()
         },
         methods: {
-            goToNextPage() {
-                this.currentPage += 1
-                this.getClients()
-            },
-            goToPreviousPage() {
-                this.currentPage -= 1
-                this.getClients()
-            },
             async getClients() {
-                // this.$store.commit('setIsLoading', true)
-                this.showNextButton = false
-                this.showPreviousButton = false
                 
-                // await axios
-                //     .get(`/api/v1/clients/`)
-                //     .then(response => {
-                //         console.log(response.data)
-                //     })
+                this.$store.commit('setIsLoading', true)
 
-                /*
                 await axios
-                    .get(`/api/v1/clients/?page=${this.currentPage}&search=${this.query}`)
+                    .get(`/api/v1/clients/`)
                     .then(response => {
-                        this.leads = response.data.results
-                        if (response.data.next) {
-                            this.showNextButton = true
-                        }
-                        if (response.data.previous) {
-                            this.showPreviousButton = true
-                        }
+                        console.log(response.data)
+                        this.clients = response.data
                     })
-                    .catch(error => {
-                        console.log(error)
-                    })
-                */
-                // this.$store.commit('setIsLoading', false)
+
+                this.$store.commit('setIsLoading', false)
             }
         }
     }
