@@ -31,8 +31,14 @@
 
             <hr>
             <div class="column is-12">
-                <h2 class="subtitle">Notes</h2>
-                <router-link :to="{ name: 'AddNote', params: { id: this.$route.params.id }}"> Add Note</router-link>
+                <h2 class="subtitle">Notes
+                    <router-link :to="{ name: 'AddNote', params: { id: this.$route.params.id }}"> Add Note</router-link>
+                </h2>
+                
+                <div class="box" v-for="note in notes" v-bind:key="note.id">
+                    <h3 class="is-size-4">{{ note.name }}</h3>
+                    <p>{{ note.body }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -44,7 +50,8 @@
         name: 'Client',
         data() {
             return {
-                client: {}
+                client: {},
+                notes: []
             }
         },
         mounted() {
@@ -63,6 +70,7 @@
                     .catch(error => {
                         console.log(error)
                     })
+                
                 this.$store.commit('setIsLoading', false)
             },
 
@@ -73,6 +81,16 @@
                     .get(`/api/v1/clients/${clientID}/`)
                     .then(response => {
                         this.client = response.data
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+                
+                await axios
+                    .get(`/api/v1/notes/?client_id=${clientID}`)
+                    .then(response => {
+                        this.notes = response.data
+                        console.log('notes get ', response.data)
                     })
                     .catch(error => {
                         console.log(error)
