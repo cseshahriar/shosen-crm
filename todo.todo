@@ -10,7 +10,11 @@ Todo List Vue:
     ✔ Set up router guards @done(21-11-24 01:08)
     ✔ Implement a load bar @done(21-11-29 08:53)
     ✔ Store user info in vuex @done(21-12-10 11:45)
-    ☐ List of clients
+    ✔ List of clients @done(22-03-28 20:54)
+    ✔ Add Client @done(22-03-28 20:54)
+    ✔ Detail client @done(22-03-28 20:54)
+    ✔ Edit client @done(22-03-28 20:54)
+    ✔ Delete client @done(22-03-28 20:54)
 
 
 Todo List Django:
@@ -35,5 +39,19 @@ Todo List Django:
     ✔ Set up the urls @done(21-11-29 20:07)
     ✔ team app and api created @done(21-12-10 11:45)
     ✔ client app and api crated @done(21-12-10 11:46)
+    -Add notes to a client
+        - database model
+        - serializer
+        - viewsets
+        - page for adding notes
+        - send information to server
+    -Show notes on the detail page of a client
+    -Edit note
+        -Page for editing note
+        -Send update to server
+    -Change information about the users
+        - Endpoint for getting information
+        - Add edt page for users
+
 
     2.50"
