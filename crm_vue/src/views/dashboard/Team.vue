@@ -3,9 +3,9 @@
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h1 class="title">Team</h1> 
-               <template v-if="team.created_by.id === parseInt($store.state.user.id)">
+                <template v-if="team.created_by.id === parseInt($store.state.user.id)">
                     <router-link :to="{'name': 'AddMember'}" class="button is-primary">Add Member</router-link>
-               </template>
+                </template>
             </div>
 
             <div class="column is-12">
@@ -14,12 +14,14 @@
                 <table class="table is-fullwidth">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Full Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="member in team.members" :key="member.id">
                             <td>{{ member.username }}</td>
+                            <td>{{ member.first_name }} {{ member.last_name }}</td>
                         </tr>
                     </tbody>
                 </table>
