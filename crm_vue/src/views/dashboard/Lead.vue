@@ -43,6 +43,8 @@
 
 <script>
     import axios from 'axios'
+    import { toast } from 'bulma-toast'
+
     export default {
         name: 'Lead',
         data() {
@@ -92,6 +94,14 @@
                     .then(response => {
                         console.log('converted to client')
                         this.$router.push('/dashboard/clients')
+                        toast({
+                            message: 'The conversion done',
+                            type: 'is-success',
+                            dismissible: true,
+                            pauseOnHover: true,
+                            duration: 2000,
+                            position: 'bottom-right',
+                        })
                     })
                     .catch(error => {
                         console.log(error)

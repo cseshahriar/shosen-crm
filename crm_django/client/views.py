@@ -54,7 +54,7 @@ def convert_lead_to_client(request):
         raise Http404
     
     client = Client.objects.create(
-        lead=lead, name=lead.company, contact_person=lead.contact_person,
+        team=team, name=lead.company, contact_person=lead.contact_person,
         email=lead.email, phone=lead.phone, website=lead.website,
         created_by=request.user
     )    

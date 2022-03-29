@@ -39,19 +39,16 @@ Todo List Django:
     ✔ Set up the urls @done(21-11-29 20:07)
     ✔ team app and api created @done(21-12-10 11:45)
     ✔ client app and api crated @done(21-12-10 11:46)
-    -Add notes to a client
-        -Done database model
-        -Done serializer
-        -Done viewsets
-        - page for adding notes
-        - send information to server
-    -Show notes on the detail page of a client
-    -Edit note
-        -Page for editing note
-        -Send update to server
-    -Change information about the users
-        - Endpoint for getting information
-        - Add edt page for users
-
-
-    2.50"
+    ✔ -Done Add notes to a client @done(22-03-29 20:49)
+        ✔ -Done database model @done(22-03-29 20:49)
+        ✔ -Done serializer @done(22-03-29 20:49)
+        ✔ -Done viewsets @done(22-03-29 20:49)
+        ✔ Done page for adding notes @done(22-03-29 20:49)
+        ✔ Done send information to server @done(22-03-29 20:49)
+    ✔ -Done Show notes on the detail page of a client @done(22-03-29 20:49)
+    ✔ -Done Edit note @done(22-03-29 20:49)
+        ✔ -Done Page for editing note @done(22-03-29 20:49)
+        ✔ -Done Send update to server @done(22-03-29 20:49)
+    ✔ -Done Change information about the users @done(22-03-29 20:49)
+        ✔ Done Endpoint for getting information @done(22-03-29 20:49)
+        ✔ Done Add edt page for users @done(22-03-29 20:49)
