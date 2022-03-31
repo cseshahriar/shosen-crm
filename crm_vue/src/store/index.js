@@ -32,6 +32,7 @@ export default createStore({
         state.team.max_leads = localStorage.getItem('team_max_leads')
         state.team.max_clients = localStorage.getItem('team_max_clients')
       } else {
+        // default values
         state.token = ''
         state.isAuthenticated = false
         state.user.id = 0 
@@ -39,6 +40,9 @@ export default createStore({
         
         state.team.id = 0
         state.team.name = ''
+        state.team.plan = ''
+        state.team.max_leads = 0
+        state.team.max_clients = 0
       }
     },
     setIsLoading(state, status) {
@@ -59,6 +63,9 @@ export default createStore({
       state.team = team
       localStorage.setItem('team_id', team.id) 
       localStorage.setItem('team_name', team.name) 
+      localStorage.setItem('team_plan', team.plan) 
+      localStorage.setItem('team_max_leads', team.max_leads) 
+      localStorage.setItem('team_max_clients', team.max_clients) 
     },
   },
   actions: {

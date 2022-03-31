@@ -107,7 +107,16 @@
                     await axios
                         .get('/api/v1/teams/get_my_team')
                         .then(response => {
-                            this.$store.commit('setItem', {'id': response.data.id, 'name':response.data.name})
+                            console.log(response.data)
+                            this.$store.commit(
+                                'setItem', {
+                                    'id': response.data.id,
+                                    'name':response.data.name,
+                                    'plan': response.data.plan,
+                                    'max_leads': response.data.max_leads,
+                                    'max_clients': response.data.max_clients,
+                                }
+                            )
                             this.$router.push('/dashboard/my-account')
                         })
                         .catch(error => {
