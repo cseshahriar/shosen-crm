@@ -12,6 +12,9 @@ export default createStore({
     team: {
       id:0,
       name: '',
+      plan: '',
+      max_leads: 0,
+      max_clients: 0
     }
   },
   mutations: {
@@ -24,6 +27,10 @@ export default createStore({
 
         state.team.name = localStorage.getItem('team_name')
         state.team.id = localStorage.getItem('team_id')
+
+        state.team.plan = localStorage.getItem('team_plan')
+        state.team.max_leads = localStorage.getItem('team_max_leads')
+        state.team.max_clients = localStorage.getItem('team_max_clients')
       } else {
         state.token = ''
         state.isAuthenticated = false
