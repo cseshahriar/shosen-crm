@@ -4,7 +4,7 @@ export default createStore({
   state: {
     isLoading: false,
     isAuthenticated: false,
-    toekn:'',
+    token:'',
     user: {
       id: 0,
       username: '',
