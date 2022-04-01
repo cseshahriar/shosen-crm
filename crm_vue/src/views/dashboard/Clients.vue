@@ -3,8 +3,21 @@
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h1 class="title">Clients</h1>
-                <router-link to="/dashboard/clients/add" class="button is-info">Add Client</router-link>
+                
+                <router-link 
+                    to="/dashboard/clients/add"
+                    v-if="$store.state.team.max_clients > num_clients"
+                >Add client</router-link>
+
+                <div
+                    class="notification is-warning"
+                    v-else
+                >
+                    You have reached the top of your limitations. Please upgrade!
+                </div>
+
                 <hr>
+
                 <form @submit.prevent="getLeads">
                     <div class="field has-addons">
                         <div class="control">
@@ -60,6 +73,11 @@
         data() {
             return {
                 clients: [],
+                num_clients: 0,
+                showNextButton: false,
+                showPreviousButton: false,
+                currentPage: 1,
+                query: '',
             }
         },
         mounted() {
@@ -67,9 +85,15 @@
         },
         methods: {
             async getClients() {
-                
                 this.$store.commit('setIsLoading', true)
+                
+                await axios
+                    .get(`/api/v1/clients/`)
+                    .then(response => {
+                        this.num_clients = response.data.length
+                    })
 
+                
                 await axios
                     .get(`/api/v1/clients/`)
                     .then(response => {
