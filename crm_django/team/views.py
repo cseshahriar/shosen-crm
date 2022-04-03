@@ -76,13 +76,15 @@ def upgrade_plan(request):
     
     if plan == 'free':
         plan = Plan.objects.get(name='Free')
-    elif plan == 'smalteam':
-        plan = Plan.objects.get(name='Small team')
+    elif plan == 'smallteam':
+        plan = Plan.objects.get(name='Small Team')
     elif plan == 'bigteam':
-        plan = Plan.objects.get(name='Big team')
+        plan = Plan.objects.get(name='Big Team')
     
+    print('plan', plan)
     team.plan = plan
     team.save()
+    print('team', team.plan)
     
     serializer = TeamSerializer(team)
     return Response(serializer.data)
@@ -90,11 +92,9 @@ def upgrade_plan(request):
 
 @api_view(['POST'])
 def add_member(request):
-    print('member----------------------------------------------', request.data)
     team = Team.objects.filter(members__in=[request.user]).first()
     username = request.data['username']
     user = User.objects.get(username=username)
-    print('user--------------------------------------------------------', user)
     team.members.add(user)
     team.save()
     return Response()  

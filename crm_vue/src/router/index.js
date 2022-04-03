@@ -21,6 +21,8 @@ import EditClient from '../views/dashboard/EditClient'
 import AddNote from '../views/dashboard/AddNote'
 import EditNote from '../views/dashboard/EditNote'
 import EditMember from '../views/dashboard/EditMember'
+import Plans from '../views/dashboard/Plans'
+import PlansThankyou from '../views/dashboard/PlansThankyou'
 
 const routes = [
   {
@@ -162,6 +164,22 @@ const routes = [
     path: '/dashboard/clients/:id/note/edit/:note_id',
     name: 'EditNote',
     component: EditNote,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/team/plans',
+    name: 'Plans',
+    component: Plans,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/team/plans/thankyou',
+    name: 'PlansThankyou',
+    component: PlansThankyou,
     meta: {
       requireLogin: true
     }
