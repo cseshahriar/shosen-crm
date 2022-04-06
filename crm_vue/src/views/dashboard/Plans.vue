@@ -59,7 +59,8 @@ export default {
     name: 'Plans',
     data() {
         return {
-            pub_key: ''
+            pub_key: '',
+            stripe: null
         }
     },
     mounted() {
@@ -71,8 +72,8 @@ export default {
             await axios
                 .get(`/api/v1/stripe/get_stripe_pub_key/`)
                 .then(response => {
-                    console.log('get pub key', response.data.pub_key)
                     this.pub_key = response.data.pub_key
+                    this.stripe = Stripe(this.pub_key)
                 })
                 .catch(error => {
                     console.log(error)
