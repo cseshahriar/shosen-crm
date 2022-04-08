@@ -40,6 +40,6 @@ class Team(models.Model):
     is_active = models.BooleanField(default=False)
     plan_start_date = models.DateTimeField(blank=True, null=True)
     plan_end_date = models.DateTimeField(blank=True, null=True)
-
+ 
     def __str__(self):
         return self.name
