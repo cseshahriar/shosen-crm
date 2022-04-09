@@ -30,7 +30,6 @@ export default {
             })
             .then(response => {
                 console.log(response)
-
                 toast({
                     message: 'The plan was changed!',
                     type: 'is-success',
@@ -39,14 +38,14 @@ export default {
                     duration: 2000,
                     position: 'bottom-right',
                 })
-
                 this.$store.commit('setTeam', {
-                    'id': response.data.id, 
-                    'name': response.data.name,
-                    'plan': response.data.plan.name,
-                    'max_leads': response.data.plan.max_leads,
-                    'max_clients': response.data.plan.max_clients
-                })
+                        'id': response.data.id,
+                        'name':response.data.name,
+                        'plan': response.data.plan.name,
+                        'max_leads': response.data.plan.max_leads,
+                        'max_clients': response.data.plan.max_clients,
+                    }
+                )
             })
             .catch(error => {
                 toast({

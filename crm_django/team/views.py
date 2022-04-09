@@ -109,19 +109,17 @@ def check_session(request):
         team = Team.objects.filter(members__in=[request.user]).first()
         subscription = stripe.Subscription.retrieve(team.stripe_subscription_id)
         product = stripe.Product.retrieve(subscription.plan.product)
-        
         team.plan_status = Team.PLAN_ACTIVE
         team.plan_end_date = datetime.formtimestamp(subscription.current_period_end)
-        team.plan = Plan.objects.get(name=product.name)
+        plane = Plan.objects.get(name=product.name)
+        team.plan = plane
         team.save()
-        
         serializer = TeamSerializer(team)
         return Response(serializer.data)
     except Exception as e:
         error = 'There something wrong. Please try again!'
         return Response({'error': error})
-    
-    
+
 @api_view(['POST'])
 def cancel_plan(request):
     team = Team.objects.filter(members__in=[request.user]).first()
