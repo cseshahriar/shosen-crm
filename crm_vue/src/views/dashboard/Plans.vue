@@ -89,6 +89,19 @@ export default {
             }
 
             await axios
+                .post('/api/v1/stripe/create_checkout_session/', data)
+                .then(response => {
+                    console.log(response)
+                    return this.stripe.redirectToCheckout({
+                        sessionId: response.data.sessionId
+                    })
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
+            /*
+            await axios
                 .post(`/api/v1/teams/upgrade_plan/`, data)
                 .then(response => {
                     console.log('Upgraded plan')
@@ -100,12 +113,21 @@ export default {
                             'max_clients': response.data.plan.max_clients,
                         }
                     )
+                    toast({
+                        message: 'The plan was changed',
+                        type: 'is-success',
+                        dismissible: true,
+                        pauseOnHover: true,
+                        duration: 2000,
+                        position: 'bottom-right',
+                    })
+
                     this.$router.push('/dashboard/team')
                 })
                 .catch(error => {
                     console.log(error)
                 })
-
+            */
             this.$store.commit('setIsLoading', false)
         }
     }

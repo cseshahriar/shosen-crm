@@ -2,7 +2,11 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from .views import TeamViewSet, UserDetail, get_my_team, cancel_plan, add_member, upgrade_plan, get_stripe_pub_key, check_session, create_checkout_session, stripe_webhook
+from .views import (
+    TeamViewSet, UserDetail, get_my_team, cancel_plan, add_member,
+    upgrade_plan, get_stripe_pub_key, check_session, create_checkout_session,
+    stripe_webhook
+)
 
 router = DefaultRouter()
 router.register('teams', TeamViewSet, basename='teams')

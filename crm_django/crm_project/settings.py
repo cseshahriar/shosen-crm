@@ -154,6 +154,9 @@ STRIPE_SECRET_KEY = 'sk_test_8afhc3XAJu8jIizixo2Selae'
 STRIPE_WEBHOOK_KEY = 'whsec_46d66584262edac1140c6c004aea2a72d1b823d92d2cfb29c4ba3ae9ca3d217b'
 # STRIPE_WEBHOOK_KEY = 'acct_1DL7L8K8MAgAeeMK'
 
-STRIPE_PRICE_ID_SMALL_TEAM = 'prod_LSWf5y5yKtyOJb'
-STRIPE_PRICE_ID_BIG_TEAM = 'prod_LSWg70Uf2jc13Z'
+FRONTEND_WEBSITE_SUCCESS_URL = 'http://localhost/8080/dashboard/team/plans/thankyou'
+FRONTEND_WEBSITE_CANCEL_URL = 'http://localhost:8080/dashboard/team/plans'
+
+STRIPE_PRICE_ID_SMALL_TEAM = 'price_1KlbbpK8MAgAeeMKI78dQA0E'
+STRIPE_PRICE_ID_BIG_TEAM = 'price_1KlbcwK8MAgAeeMKvTZqNlx6'
 

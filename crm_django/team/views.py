@@ -146,29 +146,29 @@ def create_checkout_session(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     data = json.loads(request.body)
     plan = data['plan']
-    
+
     if plan == 'smallteam':
         price_id = settings.STRIPE_PRICE_ID_SMALL_TEAM
     else:
         price_id = settings.STRIPE_PRICE_ID_BIG_TEAM
         
     team = Team.objects.filter(members__in=[request.user]).first()
-    
+    print('--------------------------------------------------------', price_id)
     try:
-        checkout_session = stripe.checkout.Session.created(
+        checkout_session = stripe.checkout.Session.create(
+            line_items = [{
+                'price': price_id,
+                'quantity': 1
+            }],
+            mode = 'subscription',
             client_reference_id=team.id,
             success_url='%s?session_id={CHECKOUT_SESSION_ID}' % settings.FRONTEND_WEBSITE_SUCCESS_URL,
-            payment_method_type = ['card'],
-            mode = 'subscription',
-            line_items = [
-                {
-                    'price': price_id,
-                    'quantity': 1
-                }
-            ]
+            cancel_url=settings.FRONTEND_WEBSITE_CANCEL_URL,
+            payment_method_types = ['card'],
         )
         return Response({'sessionId': checkout_session['id']})
     except Exception as e:
+        print('-----------------------------------------------------------', e)
         return Response({'error': str(e)})
     
 
